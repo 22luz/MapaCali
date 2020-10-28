@@ -597,7 +597,7 @@
 	
 	
 
-    var corredores = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+    var corredores = L.tileLayer.wms('https://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
 		{
 		layers: 'amb_eep_corredores_ambientales',
 		format: 'image/png',
@@ -605,7 +605,7 @@
 		});	
 	    map.addLayer(corredores);
 
-	var vallas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+	var vallas = L.tileLayer.wms('https://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
 		{
 		layers: 'mc_vallas_publicitarias',
 		format: 'image/png',
@@ -615,7 +615,7 @@
 
 	
 		
-	var comunas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+	var comunas = L.tileLayer.wms('https://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
 		{
 		layers: 'idesc:mc_comunas',
 		format: 'image/png',
