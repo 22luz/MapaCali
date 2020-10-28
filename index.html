@@ -576,27 +576,6 @@
 	  	}).addTo(map);
 		
 
-	L.easyButton('<img src="img/heatmap.png"  align="absmiddle" height="16px" >', function() 
-		{	
-		
-		console.log(marcador)
-
-		var heat = L.heatLayer([[marcador._layers[58]._latlng.lat,marcador._layers[57]._latlng.lng,64]],{radius: 100}).addTo(map);
-		
-		for (var i = 59; i<67; i++){
-
-		heat.addLatLng([marcador._layers[i]._latlng.lat,marcador._layers[i]._latlng.lng,10],{radius: 100});
-
-		};
-		
-
-		
-	  	}).addTo(map);
-
-
-	
-	
-
     var corredores = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
 		{
 		layers: 'amb_eep_corredores_ambientales',
@@ -625,8 +604,6 @@
 		
 	
 	
-	
-		
 	
 	leyenda.addOverlay(vallas, 'Vallas Publicitarias');
 	leyenda.addOverlay(comunas, 'Comunas');
