@@ -1,23 +1,43 @@
-
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	
-	<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.css" />
+<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.css" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"/>
 
 	
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"/>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.css" />
-
-
-	<link rel="stylesheet" href="https://leaflet.github.io/Leaflet.draw/src/leaflet.draw.css"/>
 	
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-	<title>Ejemplo 3</title>
 	
+<script src="jquery-3.4.1.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.js"></script>
+<link rel="stylesheet" href="https://leaflet.github.io/Leaflet.draw/src/leaflet.draw.css"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="glass/leaflet.magnifyingglass.css" />
+
+	
+<link rel="stylesheet" href="posición/dist/L.Control.Locate.min.css" />
+ <link rel="stylesheet" href="geocodificar/l.geosearch.css" />
+
+
+<script src="stack/Leaflet.Marker.Stack.js"></script>
+<script src="stack/Leaflet.Icon.Chip.js"></script>
+ 
+	
+
+
+<link rel="shortcut icon" href="img/map.png" type="image/x-icon">
+<link rel="stylesheet" href="css/estilos.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+<script src="leaflet-heat.js"></script>
+
+
+
+	<title>GeoCaliUv</title>
+
 	
 	
 	<style>
@@ -28,6 +48,7 @@
 	html, body{
 	height:100% ;
 	width:100% vw;
+	margin: 5px;
 	}
 	
 	
@@ -36,7 +57,19 @@
 	width:100%;
 	height:100%;}
 
-
+	#norte{
+	position:fixed;
+	width:2%;
+	left: 3%;
+	padding: 1.2%;
+	}
+	
+	#color{
+	position:fixed;
+	width:1%;
+	left: 14%;
+	top: 1px;
+	}
 	</style>
 	
 	
@@ -44,76 +77,537 @@
 	</head>	
 	<body>
 
-
-			<div id="map" style="z-index:0">
+		
+			<title>GeoCaliUv</title>
+			<style>
+				*{	
+					padding: 0% ;
+					margin: 0% 0%;		
+				}
+				html, body{
+				height:50% ;
+				width:1% vw;
+				
+				}
+				
+				
+				#map{
+			
+				width: 70%;
+				left:15%;
+				height:100%;}
+			
+				#norte{
+				position:  relative;
+				width: 10%;
+				left: 7%;
+				padding: 1%;
+				}
+				
+				#color{
+				position: relative;
+				width: 15%;
+				left: 14%;
+				padding: 1px;
+				margin: 1%;
+				}
 				
 			
+		
+		
+				</style>
+		</head>
+		
+		<body>
+			
+		   
+			<header>
+				<section class="textos-header">
+					<h1>GeoCaliUv</h1>
+					<h2>Localización de puntos de interés</h2>
+				</section>
+				<div><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br></div>
+				<h2 class="titulo">Mapa Santiago de Cali</h2>
+				
+				<div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+						style="height: 100%; width: 100%;">
+						<path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+							style="stroke: none; fill: rgb(255, 255, 255);"></path>
+					</svg>
+				</div>
+				
+				<input id="color" type="color" name="color de los puntos" value="#118D0D">	
+				
+				<div id="map" style="z-index:0">
+				<img id="norte" src="img/norte.png" style="z-index:9999" ></img>
+				</div> 
+				
+					
+				
+			</header>
+			
+			<div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 			</div>
+			<div>
+				<br>
+				<br>
+				<br>
+			</div>
+				<section class="portafolio">
+					<div class="contenedor">
+						<h2 class="titulo">Lugares representativos<h2>
+						<div class="galeria-port">
+							<div class="imagen-port">
+								<img src="img/img8.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>Plaza de toros</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img2.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>Bellavista</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img3.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>Univalle</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img1.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>River view Park</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img4.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>Torres del refugio</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img5.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>Iglesia el Templete</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img6.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<p>Edificio de colores</p>
+								</div>
+							</div>
+							<div class="imagen-port">
+								<img src="img/img7.jpg" alt="">
+								<div class="hover-galeria">
+									<img src="img/icono1.png" alt="">
+									<center><p>Universidad Santiago</p></center>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			   
+				   </main>
+			<footer>
+				<div class="contenedor-footer">
+					<div class="content-foo">
+						<h4>Número de contacto</h4>
+						<p>3158162931</p>
+					</div>
+					<div class="content-foo">
+						<h4>Email</h4>
+						<p>parra.luz@correounivalle.edu.co</p>
+					</div>
+					<div class="content-foo">
+						<h4>Direción</h4>
+						<p>Univalle</p>
+					</div>
+				</div>
+				<h2 class="titulo-final">&copy; Luz E. Parra | Lparra </h2>
+			</footer>
+		</body>
+			
 
 
 	</body>
-	
-	
+
 	<script src="https://npmcdn.com/jquery@3.0.0/dist/jquery.min.js"></script>
 	<script src="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.js"></script>
+	<script src="https://rawgit.com/MarcChasse/leaflet.ScaleFactor/master/leaflet.scalefactor.min.js"></script>
 	
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.js"></script>
 	<script src="posición/src/L.Control.Locate.js" ></script>
 	<script src="https://kit.fontawesome.com/02eb88b373.js" crossorigin="anonymous"></script>
+	<script src="graticule/Leaflet.Graticule.js"></script>
+	<script src="glass/leaflet.magnifyingglass.js"></script>
+	
+	<link rel="stylesheet" href="betterscale/L.Control.BetterScale.css" />
+	<script src="betterscale/L.Control.BetterScale.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+	<script src="posición/src/L.Control.Locate.js" ></script>
+	<script src="https://kit.fontawesome.com/02eb88b373.js" crossorigin="anonymous"></script>
+
+	<script src='migration/src/src.js'></script>
 	<script src="spin/spin.min.js" charset="utf-8"></script>
 	<script src="spin/leaflet.spin.min.js" charset="utf-8"></script>
-	<script src="print/dist/bundle.js"></script>
+    <script src="print/dist/bundle.js"></script>
+
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" ></script>
+	<script src="stack/Leaflet.Marker.Stack.js"></script>
+	<script src="stack/Leaflet.Icon.Chip.js"></script>
+
+	<script src="geocodificar/l.control.geosearch.js"></script>
+    <script src="geocodificar/l.geosearch.provider.esri.js"></script>
+	
+	
+	<link rel="stylesheet" href="minimap/Control.MiniMap.css" />
+	<script src="minimap/Control.MiniMap.js" type="text/javascript"></script>
+
+
+
+  
+
+
+
+
 	<script>
+
+    var corner1 = L.latLng(3.453193, -76.542594),
+        corner2 = L.latLng(3.386745, -76.551463),
+        bounds = L.latLngBounds(corner1, corner2);
+
 	
-	
-	
-	var map = L.map('map',
+		var map = L.map('map',
 	{
 		zoom: 10
-	}).setView([3.42335,-76.52086], 12);           ////SE INSERTA UN MAPA EN EL DIV "map" con coordenadas 3.42335,-76.52086
+	}).setView([3.42335,-76.52086], 12);
+		  
 	
 	
-	var mapabase = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+	
+	
+	var mapabase = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', 
 		{
 			maxZoom: 15,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		});
 	
-	var mapabase2 = L.tileLayer('https://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', 
+	var mapabase2 = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', 
 		{
 			maxZoom: 18,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		})
 	
-    
+
 	mapabase.addTo(map);
+
 	
-	L.control.scale({position:'bottomleft'}).addTo(map)	;
-	L.control.layers({mapabase,mapabase2}).addTo(map);
-    var comunas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+	
+	L.control.scale({position:'bottomleft'}).addTo(map);
+	var leyenda = L.control.layers({mapabase,mapabase2}).addTo(map);
+
+	L.control.locate({setView:'true',flyto:'false',drawCircle:'true',showCompass:'true',drawMarker:'true',keepCurrentZoomLevel:'false',locateOptions: {
+               enableHighAccuracy: true}}).addTo(map);
+	
+	
+	new L.Control.GeoSearch({provider: new L.GeoSearch.Provider.Esri()}).addTo(map);	
+	
+	
+
+
+	var popup = L.popup();	
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("Coordenadas:  " + e.latlng.toString())
+			.openOn(map);
+
+			
+	}
+
+	map.on('click', onMapClick);	
+	
+	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	var osmAttrib='Map data &copy; OpenStreetMap contributors';
+	
+	var osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 8, attribution: osmAttrib });
+		var miniMap2 = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(map);
+
+
+	L.control.scalefactor().addTo(map);
+	
+
+	
+
+	var icono = L.icon({
+			iconSize: [35, 35],
+			iconUrl:'img/marcador.png'
+			});
+			
+    var geojsonFeature = [{
+    "type": "Feature",
+	"properties": {
+        "popupContent": "1"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.550204,3.442537]
+    }
+	}, {
+    "type": "Feature",
+    "properties": {
+        "popupContent": "2"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.545484,3.436942]
+    }
+	}, {
+    "type": "Feature",
+    "properties": {
+        "popupContent": "3"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-76.544501,3.445482]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "4"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-76.553450,3.435175]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "5"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.553941,3.434488]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "6"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.542534,3.427813]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "7"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.540665,3.443912]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "8"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.554138,3.427911]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "9"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.545718,3.441878]
+    }
+	},{
+    "type": "Feature",
+    "properties": {
+        "popupContent": "10"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-76.540385,3.442397]
+    }
+	}];	
+	function onEachFeature(feature, layer) {
+    if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+    }}
+
+	var marck = L.icon({
+				iconUrl: 'img/marcador.png',
+				iconSize:     [37, 37],
+				iconAnchor:   [13, 27],
+				popupAnchor:  [-5,-20] 
+			});	
+	var estilo = 
 		{
-		layers: 'idesc:mc_comunas',
-		format: 'image/png',
-		transparent: true,
-		});
-		map.addLayer(comunas);
-	var corredores = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+			radius: 7,
+			fillColor: "green",
+			color: "black",
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 1,
+		};
+		
+	var encima = 
+		{
+			radius: 7,
+			fillColor: "black",
+			color: "black",
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 1,
+		};
+
+		
+	var marcador = L.geoJSON(geojsonFeature,{pointToLayer:function(feature, latlng) 
+	{return L.circleMarker(latlng, estilo)},onEachFeature: onEachFeature});
+	var marcador1 = L.geoJSON(geojsonFeature, {pointToLayer: function (feature, latlng) 
+	{return L.marker(latlng, {icon: marck})},onEachFeature: onEachFeature});
+	
+
+
+	L.easyButton('<img src="img/restart.png"  align="absmiddle" height="16px" >', function() 
+		{
+		alert('reiniciando pagina');
+		location.reload();
+
+	  	}).addTo(map);
+		
+			
+	L.easyButton('<img src="img/zoom.png"  align="absmiddle" height="16px" >', function() 
+		{
+		marcador.addTo(map);
+
+
+
+		
+		leyenda.addOverlay(marcador, 'Marcador');
+		leyenda.addOverlay(marcador1, 'Marcador1');
+		
+	  	}).addTo(map);
+		
+		
+	L.easyButton('<img src="img/colors.png"  align="absmiddle" height="16px" >', function() 
+		{
+		var colors = $('#color').val();
+		
+		var color_click = 
+		{
+			radius: 7,
+			fillColor: $('#color').val(),
+			color: "black",
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 1,
+		};
+		marcador.setStyle(color_click);
+		
+		
+		marcador.on('mouseover', function() 
+			{ 
+				this.setStyle(encima);				
+			});
+		marcador.on('mouseout', function() 
+			{
+				this.setStyle(color_click);
+			});	
+
+	  	}).addTo(map);
+		
+
+	L.easyButton('<img src="img/heatmap.png"  align="absmiddle" height="16px" >', function() 
+		{	
+		
+		console.log(marcador)
+
+		var heat = L.heatLayer([[marcador._layers[58]._latlng.lat,marcador._layers[57]._latlng.lng,64]],{radius: 100}).addTo(map);
+		
+		for (var i = 59; i<67; i++){
+
+		heat.addLatLng([marcador._layers[i]._latlng.lat,marcador._layers[i]._latlng.lng,10],{radius: 100});
+
+		};
+		
+
+		
+	  	}).addTo(map);
+
+
+	
+	
+
+    var corredores = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
 		{
 		layers: 'amb_eep_corredores_ambientales',
 		format: 'image/png',
 		transparent: true,
-		});
-		map.addLayer(corredores);
-		var estrato = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
-		{
-		layers: 'est_estrato_social_lado_manzana',
-		format: 'image/png',
-		transparent: true,
-		});
-		map.addLayer(estrato);
+		});	
+	    map.addLayer(corredores);
 
 	var vallas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
 		{
@@ -122,20 +616,69 @@
 		transparent: true,
 		});
 		map.addLayer(vallas);
-    
+
 	
-    
-
-
-	leyenda.addOverlay(estrato, 'Estrato');
+		
+	var comunas = L.tileLayer.wms('http://idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0',
+		{
+		layers: 'idesc:mc_comunas',
+		format: 'image/png',
+		transparent: true,
+		});
+		map.addLayer(comunas);
+		
+	
+	
+	
+		
+	
 	leyenda.addOverlay(vallas, 'Vallas Publicitarias');
-	leyenda.addOverlay(corredores, 'Corredores Ambientales');
 	leyenda.addOverlay(comunas, 'Comunas');
+	leyenda.addOverlay(comunas, 'Corredores');
 
 
+	
+	
+	
+	
+//var points = [[3.37806194,-76.53199694],[3.37724483,-76.53126936],[3.37654950,-76.53721731],[3.37762464,-76.53595578],[3.37779472,-76.53335518],[3.37430417,-76.53126850],[3.37290514,-76.53200075],[3.37223372,-76.53049969],[3.37035536,-76.53007353],[3.37130925,-76.53347509],[3.37158733,-76.53505095],[3.37405781,-76.53426914],[3.37443975,-76.53630925],[3.37506144,-76.53389606],[3.37499744,-76.53235328],[3.37607894,-76.53255561]]
+   // var colors = [ '#FF0000', '#FF7400', '#FFC100', '#D9FF00', '#28FF00', '#00FFDA', '#007EFF'];
 
+    //points.forEach(function(point) {
+      //var chipIcons = [];
+      //var rdColors = getRandomOrderedColors();
+      //for (var i = 0; i < rdColors.length; i++) {
+        //chipIcons.push(L.icon.chip({
+          //color: rdColors[i]
+        //}));
+      //}
+	  //var stack = L.marker.stack(point, {
+        //icons: chipIcons,
+        //stackOffset: [0, -5]
+      //});
 
+      //map.addLayer(stack);
+    //})
 
+    function getRandomOrderedColors() {
+      var numColors = 3 + Math.floor(Math.random() * 17);
+      var rdColors = [];
+      for (var i = 0; i < numColors; i++) {
+        var rdIndex = Math.floor(Math.random()*colors.length);
+        rdColors.push({
+          color: colors[rdIndex],
+          index: rdIndex
+        });
+      }
+      rdColors.sort(function(a, b) {
+        return (a.index < b.index) ? 1 : -1;
+      });
+      return rdColors.map(function(c) {
+        return c.color;
+      });
+	}
+
+	
 	var drawnItems = new L.FeatureGroup();
 
 			var drawControl = new L.Control.Draw({
@@ -167,7 +710,7 @@
 			});
 
 	
-	map.spin(true);
+	map.spin(false);
 
 
 	var printer = L.easyPrint({
@@ -181,7 +724,76 @@
 		function manualPrint () {
 			printer.printMap('CurrentSize', 'MyManualPrint')
 		}
-    	
+
+	
+
+		L.latlngGraticule({
+			showLabel: true,
+			opacity:0.7,
+			color: 'black',
+			zoomInterval: [
+				{start: 12, end: 12, interval: 0.1}
+
+			]
+		}).addTo(map);
+	
+	
+	
+	
+	var popup = L.popup();
+
+	var photoImg = '<img src="img/hola.png" height="150px" width="150px"/>';
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("<center>Saludo </center>" + "</br>"+ photoImg)
+			.openOn(map);
+	}
+
+	map.on('click', onMapClick);
+	
+	
+	L.easyButton('<img src="img/buscar.png"  align="absmiddle" height="16px" >', function() 
+		{
+		
+			var marcador = L.marker([3.42335,-76.52086]);
+			var magnifyingGlass = L.magnifyingGlass({
+			layers: [ marcador, mapabase2 ]
+			});
+
+			map.addLayer(magnifyingGlass);
+
+	  	}).addTo(map);
+		
+		
+	L.control.betterscale({position:'bottomright'}).addTo(map);
+
+
+	L.easyButton('<img src="img/arrow.png"  align="absmiddle" height="16px" >', function() 
+	{
+	
+		var data = [{"from":[-76.52086,3.42335],"to":[-76.554138,3.427911],"labels":["INICIO","LLEGADA"],"color":"#10800D "},{"from":[-76.52086,3.42335],"to":[-76.550204,3.442537],"labels":[null,"LLEGADA"],"color":"#6D1FBF"}];
+			
+		 data = data.map(item => { return {...item, value: parseInt(100)}});
+
+		 var migrationLayer = new L.migrationLayer({
+				map: map,
+				data: data,
+				pulseRadius:30,
+				pulseBorderWidth:3,
+				arcWidth:3,
+				arcLabel:true,
+				arcLabelFont:'10px sans-serif',
+				maxWidth:10
+				}
+		);
+		migrationLayer.addTo(map);
+
+	}).addTo(map);
+	
+	
+	 
 
 	</script>
 	
